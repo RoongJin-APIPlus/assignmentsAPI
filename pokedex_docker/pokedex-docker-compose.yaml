@@ -1,0 +1,15 @@
+version: '3'
+services:
+  pokedex-postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=myPostgres
+
+  pokedex-app:
+    image: pokedex-docker:pokedex-app
+    depends_on:
+      - pokedex-postgres
